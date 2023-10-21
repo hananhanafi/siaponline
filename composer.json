@@ -1,0 +1,17 @@
+{
+    "name": "admin/sabar.reviewhostingbook.com",
+    "autoload": {
+        "psr-4": {
+            "Admin\\SabarReviewhostingbookCom\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hananhanafi",
+            "email": "hananhanafi76@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.29"
+    }
+}

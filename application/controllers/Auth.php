@@ -10,16 +10,18 @@ class Auth extends CI_Controller {
 	
 	public function index() {
 		$session = $this->session->userdata('status');
-		$data['profile'] = $this->profilecaleg->select_all();
-		$this->load->view('landingpage', $data);
-
+		if ($session == '') {
+			$this->load->view('login/index');
+		} else {
+			redirect('Home');
+		}
 	}
 
 	public function loginpage() {
 		$session = $this->session->userdata('status');
 
 		if ($session == '') {
-			$this->load->view('login');
+			$this->load->view('login/index');
 		} else {
 			redirect('Home');
 		}

@@ -15,6 +15,7 @@
     <?php if($this->session->userdata('id_role') == 1 ){  ?>
       <td class="text-center" style="min-width: 80px">
         <button class="btn btn-xs btn-success update-dataPengguna" data-id="<?php echo $dPengguna->id; ?>" data-toggle="tooltip" title="Update"><i class="fa fa-pencil"></i></button>
+        <a class="btn btn-xs btn-danger" href="javascript:void(0)" title="Edit" onclick="delete_pengguna(<?php echo $dPengguna->id; ?>)"><i class="glyphicon glyphicon-trash"></i></a>
       </td>
 
     <?php }  ?>

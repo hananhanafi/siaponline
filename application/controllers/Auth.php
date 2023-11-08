@@ -66,7 +66,8 @@ class Auth extends CI_Controller {
 
 				$this->session->set_userdata($userdata);
 
-				$this->session->set_flashdata('msg', show_succ_msg('<b style="font-size: 20px">Selamat datang '.$data->first_name.'......</b>'));
+				$this->session->set_flashdata('msg', ' ');
+				$this->session->set_flashdata('welcome_msg', show_succ_msg('<b style="font-size: 20px">Selamat datang2 '.$data->first_name.'......</b>'));
 
 				redirect('Home');
 			}

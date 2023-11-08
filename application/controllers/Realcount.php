@@ -32,6 +32,8 @@ class Realcount extends AUTH_Controller {
 			$row[] = $realcount->id_tps;
 			$row[] = $realcount->result;
 
+
+			$row[] = '&nbsp;<a class="btn btn-xs btn-danger" href="javascript:void(0)" title="Edit" onclick="delete_realcount('."'".$realcount->id_realcount."'".')"><i class="glyphicon glyphicon-trash"></i></a>';	
 			$data[] = $row;
 		}
 
@@ -146,17 +148,14 @@ class Realcount extends AUTH_Controller {
 
 	public function ajax_edit($id)
 	{
-		$data = $this->slider->get_by_id($id);
+		$data = $this->realcount->get_by_id($id);
 
 		echo json_encode($data);
 	}
 
 	public function ajax_delete($id)
 	{
-		//delete file
-		$slider = $this->slider->get_by_id($id);
-		
-		$this->slider->delete_by_id($id);
+		$this->realcount->delete_by_id($id);
 		echo json_encode(array("status" => TRUE));
 	}
 

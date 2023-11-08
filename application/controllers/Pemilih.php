@@ -95,7 +95,7 @@ class Pemilih extends AUTH_Controller {
 			$row[] = $pemilih->tps;
 			$row[] = $pemilih->first_name;
 
-			$row[] = '<a class="btn btn-xs btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_pemilih('."'".$pemilih->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';		    
+			$row[] = '<a class="btn btn-xs btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_pemilih('."'".$pemilih->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;<a class="btn btn-xs btn-danger" href="javascript:void(0)" title="Edit" onclick="delete_pemilih('."'".$pemilih->id."'".')"><i class="glyphicon glyphicon-trash"></i></a>';		    
 	  		
 			$data[] = $row;
 
@@ -168,7 +168,7 @@ class Pemilih extends AUTH_Controller {
 	public function ajax_delete($id)
 	{
 		//delete file
-		$calon = $this->pemilih->get_by_id($id);
+		// $calon = $this->pemilih->get_by_id($id);
 		
 		$this->pemilih->delete_by_id($id);
 		echo json_encode(array("status" => TRUE));

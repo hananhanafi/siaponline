@@ -86,7 +86,7 @@ class M_realcount extends CI_Model {
 	public function get_by_id($id)
 	{
 		$this->db->from($this->table);
-		$this->db->where('id_slider',$id);
+		$this->db->where('id_realcount',$id);
 		$query = $this->db->get();
 
 		return $query->row();
@@ -94,7 +94,7 @@ class M_realcount extends CI_Model {
 
 	public function delete_by_id($id)
 	{
-		$this->db->where('id_slider', $id);
+		$this->db->where('id_realcount', $id);
 		$this->db->delete($this->table);
 	}
 

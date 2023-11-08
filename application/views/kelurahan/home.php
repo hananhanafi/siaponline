@@ -298,7 +298,46 @@
 	        }
 	    });
 	}
+	
+	function delete_per_kelurahan(id)
+	{
+		
+		swal({
+			title: "Anda yakin?",
+			text: "Menghapus data Kelurahan di Wilayah Dapil dapat menghapus semua data yang berhubungan dengan Kelurahan tersebut.",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonClass: "btn-danger",
+			confirmButtonText: "Ya, hapus!",
+			cancelButtonText: "Tidak",
+			closeOnConfirm: false,
+			closeOnCancel: false
+		},
 
+		function(isConfirm) {
+
+			if (isConfirm) {
+
+				$.ajax({
+					url : "<?php echo site_url('kelurahan/ajax_deleteById')?>/"+id,
+					type: "POST",
+					dataType: "JSON",
+					error: function(jqXHR, textStatus, errorThrown) {
+						alert('Error deleting data');
+					},
+
+					success: function(data) {
+						$('#modal_form').modal('hide');
+						reload_table();
+						swal("Terhapus!", "Data berhasil dihapus.", "success");
+					}
+				});
+			} else {
+				swal("Dibatalkan", "Data batal dihapus :)", "error");
+			}
+
+		});
+	}
 
 	function delete_kelurahan(id)
 	{

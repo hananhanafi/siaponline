@@ -94,7 +94,7 @@ class Saksi extends AUTH_Controller {
 			$row[] = $saksi->first_name;
 
 
-			$row[] = '<a class="btn btn-xs btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_saksi('."'".$saksi->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
+			$row[] = '<a class="btn btn-xs btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_saksi('."'".$saksi->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;<a class="btn btn-xs btn-danger" href="javascript:void(0)" title="Edit" onclick="delete_saksi('."'".$saksi->id."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
 		    
 	  		
 			$data[] = $row;
@@ -166,7 +166,7 @@ class Saksi extends AUTH_Controller {
 	public function ajax_delete($id)
 	{
 		//delete file
-		$calon = $this->saksi->get_by_id($id);
+		// $calon = $this->saksi->get_by_id($id);
 		
 		$this->saksi->delete_by_id($id);
 		echo json_encode(array("status" => TRUE));

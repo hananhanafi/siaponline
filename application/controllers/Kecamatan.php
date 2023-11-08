@@ -36,7 +36,7 @@ class Kecamatan extends AUTH_Controller {
 			$row[] = $kecamatan->kode;
 			$row[] = $kecamatan->nama_kec;
 
-				$row[] = '<a class="btn btn-xs btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_kecamatan('."'".$kecamatan->id_kec."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
+				$row[] = '<a class="btn btn-xs btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_kecamatan('."'".$kecamatan->id_kec."'".')"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;<a class="btn btn-xs btn-danger" href="javascript:void(0)" title="Edit" onclick="delete_per_kecamatan('."'".$kecamatan->id_kec."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
 
 			$data[] = $row;
 		}
@@ -83,6 +83,13 @@ class Kecamatan extends AUTH_Controller {
 		$this->kecamatan->update(array('id_kec' => $this->input->post('id_kec')), $data);
 		echo json_encode(array("status" => TRUE));
 	}
+
+	public function ajax_deleteById($id)
+	{
+		$this->kecamatan->delete_by_id($id);
+		echo json_encode(array("status" => TRUE));
+	}
+
 
 	public function ajax_delete($id)
 	{

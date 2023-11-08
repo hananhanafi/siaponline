@@ -39,7 +39,7 @@ class Kelurahan extends AUTH_Controller {
 			$row[] = $kelurahan->nama_kec;
 			$row[] = $kelurahan->nama_desa;
 
-			$row[] = '<a class="btn btn-xs btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_kelurahan('."'".$kelurahan->id_desa."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
+			$row[] = '<a class="btn btn-xs btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_kelurahan('."'".$kelurahan->id_desa."'".')"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;<a class="btn btn-xs btn-danger" href="javascript:void(0)" title="Edit" onclick="delete_per_kelurahan('."'".$kelurahan->id_desa."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
 			$data[] = $row;
 		}
 
@@ -83,6 +83,12 @@ class Kelurahan extends AUTH_Controller {
 		);
 
 		$this->kelurahan->update(array('id_desa' => $this->input->post('id_desa')), $data);
+		echo json_encode(array("status" => TRUE));
+	}
+
+	public function ajax_deleteById($id)
+	{
+		$this->kelurahan->delete_by_id($id);
 		echo json_encode(array("status" => TRUE));
 	}
 

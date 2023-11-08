@@ -72,13 +72,14 @@
 							<th >RT </th>
 							<th >TPS </th>
 							<th >Jumlah Suara</th>
+            				<th style="width:80px;">Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
 					</tbody>
 					<tfoot>
 						<tr>
-							<th colspan="6"></th>
+							<th colspan="7"></th>
 						</tr>
 					</tfoot>
 				</table>
@@ -314,6 +315,48 @@
 
 	        }
 	    });
+	}
+	
+
+	function delete_realcount(id)
+		{
+			swal({
+				title: "Anda yakin?",
+				text: "Data yang sudah terhapus tidak akan bisa dikembalikan.",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonClass: "btn-danger",
+				confirmButtonText: "Ya, hapus!",
+				cancelButtonText: "Tidak",
+				closeOnConfirm: false,
+				closeOnCancel: false
+			},
+
+			function(isConfirm) {
+
+			if (isConfirm) {
+
+				$.ajax({
+					url : "<?php echo site_url('realcount/ajax_delete')?>/"+id,
+					type: "POST",
+					dataType: "JSON",
+					error: function(jqXHR, textStatus, errorThrown) {
+						alert('Error deleting data');
+					},
+
+					success: function(data) {
+						$('#modal_form').modal('hide');
+						reload_table();
+						swal("Terhapus!", "Data berhasil dihapus.", "success");
+					}
+				});
+			} else {
+				swal("Dibatalkan", "Data batal dihapus :)", "error");
+			}
+
+		});
+
+		
 	}
 
 </script>

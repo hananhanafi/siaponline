@@ -166,6 +166,13 @@ class Pengguna extends AUTH_Controller {
 		echo json_encode($out);
 	}
 
+
+	public function ajax_delete($id)
+	{
+		$this->M_pengguna->delete($id);
+		echo json_encode(array("status" => TRUE));
+	}
+
 	public function delete() {
 		$id = $_POST['id'];
 		$result = $this->M_pengguna->delete($id);

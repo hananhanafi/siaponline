@@ -100,10 +100,14 @@
     </div>
 </div>
 
+<!-- FLASH MESSAGE -->
+<div class="msg" style="display:none;">
+  <?php if($this->session->flashdata('msg')):echo $this->session->flashdata('msg');endif; ?><br/>
+</div>
 
 <!-- FLASH MESSAGE -->
 <div class="msg" style="display:none;">
-  <?php echo $this->session->flashdata('msg'); ?>
+  <?php if($this->session->flashdata('welcome_msg')):echo $this->session->flashdata('welcome_msg');endif; ?><br/>
 </div>
 
 <script type="text/javascript">

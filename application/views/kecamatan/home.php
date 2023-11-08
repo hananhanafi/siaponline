@@ -213,6 +213,46 @@
 	        }
 	    });
 	}
+	
+	function delete_per_kecamatan(id)
+	{
+		
+		swal({
+			title: "Anda yakin?",
+			text: "Menghapus data Kecamatan di Wilayah Dapil dapat menghapus semua data yang berhubungan dengan Kecamatan tersebut.",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonClass: "btn-danger",
+			confirmButtonText: "Ya, hapus!",
+			cancelButtonText: "Tidak",
+			closeOnConfirm: false,
+			closeOnCancel: false
+		},
+
+		function(isConfirm) {
+
+			if (isConfirm) {
+
+				$.ajax({
+					url : "<?php echo site_url('kecamatan/ajax_deleteById')?>/"+id,
+					type: "POST",
+					dataType: "JSON",
+					error: function(jqXHR, textStatus, errorThrown) {
+						alert('Error deleting data');
+					},
+
+					success: function(data) {
+						$('#modal_form').modal('hide');
+						reload_table();
+						swal("Terhapus!", "Data berhasil dihapus.", "success");
+					}
+				});
+			} else {
+				swal("Dibatalkan", "Data batal dihapus :)", "error");
+			}
+
+		});
+	}
 
 	function reload_table()
 	{
@@ -344,6 +384,22 @@
 
                     </div>
                 </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Simpan</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal" id="modal_del" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">Apakah anda yakin ingin menghapus data ini2 ?</h3>
             </div>
             <div class="modal-footer">
                 <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Simpan</button>

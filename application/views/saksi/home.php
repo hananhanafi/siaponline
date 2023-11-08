@@ -49,7 +49,7 @@
             			<th>RW</th>
             			<th>RT</th>
                         <th>Dibuat</th>
-            			<th style="width:80px;">Aksi</th>
+            			<th style="min-width:80px;">Aksi</th>
             		</tr>
         		</thead>
         		<tbody>
@@ -284,7 +284,7 @@ function add_person()
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
     $('#modal_form').modal('show'); // show bootstrap modal
-    $('.modal-title').text('Tambah Pemilih'); // Set Title to Bootstrap modal title
+    $('.modal-title').text('Tambah Saksi'); // Set Title to Bootstrap modal title
 
     $('#photo-preview').hide(); // hide photo preview modal
 

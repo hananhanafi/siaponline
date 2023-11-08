@@ -55,3 +55,46 @@
   <div id="tempat-modal"></div>
   <?php show_my_confirm('konfirmasiHapus', 'hapus-dataPengguna', 'Hapus Data Ini?', 'Ya, Hapus Data Ini'); ?>
   
+<script type="text/javascript">
+	function delete_pengguna(id)
+		{
+			swal({
+				title: "Anda yakin?",
+				text: "Data yang sudah terhapus tidak akan bisa dikembalikan.",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonClass: "btn-danger",
+				confirmButtonText: "Ya, hapus!",
+				cancelButtonText: "Tidak",
+				closeOnConfirm: false,
+				closeOnCancel: false
+			},
+
+			function(isConfirm) {
+
+			if (isConfirm) {
+
+				$.ajax({
+					url : "<?php echo site_url('pengguna/ajax_delete')?>/"+id,
+					type: "POST",
+					dataType: "JSON",
+					error: function(jqXHR, textStatus, errorThrown) {
+						alert('Error deleting data');
+					},
+
+					success: function(data) {
+						$('#modal_form').modal('hide');
+						tampilPengguna();
+						swal("Terhapus!", "Data berhasil dihapus.", "success");
+					}
+				});
+			} else {
+				swal("Dibatalkan", "Data batal dihapus :)", "error");
+			}
+
+		});
+
+		
+	}
+
+</script>

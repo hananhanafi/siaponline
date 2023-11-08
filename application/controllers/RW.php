@@ -43,7 +43,7 @@ class RW extends AUTH_Controller {
 			$row[] = $rw->nama_desa;
 			$row[] = $rw->nama_rw;
 
-			$row[] = '<a class="btn btn-xs btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_rw('."'".$rw->id_rw."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
+			$row[] = '<a class="btn btn-xs btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_rw('."'".$rw->id_rw."'".')"><i class="glyphicon glyphicon-pencil"></i></a>&nbsp;<a class="btn btn-xs btn-danger" href="javascript:void(0)" title="Edit" onclick="delete_per_rw('."'".$rw->id_rw."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
 
 			$data[] = $row;
 		}
@@ -107,6 +107,13 @@ class RW extends AUTH_Controller {
 		$this->rw->update(array('id_rw' => $this->input->post('id_rw')), $data);
 		echo json_encode(array("status" => TRUE));
 	}
+
+	public function ajax_deleteById($id)
+	{
+		$this->rw->delete_by_id($id);
+		echo json_encode(array("status" => TRUE));
+	}
+
 
 	public function ajax_delete($id)
 	{
